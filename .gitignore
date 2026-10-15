@@ -1,0 +1,9 @@
+node_modules/
+dist/
+*.log
+.vite/
+.DS_Store
+Thumbs.db
+.netlify/
+__pycache__/
+.claude/settings.local.json

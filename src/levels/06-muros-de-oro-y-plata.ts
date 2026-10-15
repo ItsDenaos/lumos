@@ -1,0 +1,40 @@
+import type { LevelData } from './types';
+
+// Cada uno cruza los muros de su metal para abrirle paso al otro.
+export const level06: LevelData = {
+  id: 6,
+  name: 'Muros de oro y plata',
+  zone: 'sanctuary',
+  parTime: 90,
+  map: [
+    '################################',
+    '################################',
+    '################################',
+    '################################',
+    '#........................P.....#',
+    '#.......c....c...........Pc...*#',
+    '#........................P.....#',
+    '#.LM...................].P....[#',
+    '#####OO#oo####PP##..########..##',
+    '#####OO#######PP##..########..##',
+    '#####O*#######Pc##..########..##',
+    '#####OO#######PP##..########..##',
+    '#####OO#######PP##..########..##',
+    '#....................O.........#',
+    '#.........*......c...O*..*.....#',
+    '#....................O.........#',
+    '#....................O.........#',
+    '#########################pp#####',
+  ],
+  entities: [
+    { type: 'hint', at: [1, 2], text: 'El oro deja pasar a Mos; la plata, a Lu' },
+    { type: 'lever', at: [9, 16], channel: 'pink' },
+    { type: 'mover', at: [11, 4], size: [1, 4], to: [11, 0], channel: 'pink' },
+    { type: 'mover', at: [12, 13], size: [1, 4], to: [12, 9], channel: 'green' },
+    { type: 'lever', at: [16, 16], channel: 'green' },
+    { type: 'button', at: [23, 16], channel: 'cyan' },
+    { type: 'mover', at: [18, 16], size: [2, 1], to: [18, 8], channel: 'cyan' },
+    { type: 'lever', at: [27, 7], channel: 'white' },
+    { type: 'mover', at: [28, 16], size: [2, 1], to: [28, 8], channel: 'white' },
+  ],
+};

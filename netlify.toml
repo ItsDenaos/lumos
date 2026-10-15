@@ -1,0 +1,10 @@
+# Publicación en Netlify: en cada subida instala, pasa los tests y compila.
+# Si un test falla no se publica nada y la web sigue con la última versión buena.
+# Se publica dist/, que solo contiene index.html (el juego entero en un archivo).
+[build]
+  command = "npm test && npm run build"
+  publish = "dist"
+
+[build.environment]
+  # Vitest 5 pide Node 22.12 o más nuevo.
+  NODE_VERSION = "22"

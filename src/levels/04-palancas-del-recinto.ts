@@ -1,0 +1,41 @@
+import type { LevelData } from './types';
+
+// Palancas que abren compuertas en orden. Si Lu salta abajo sin abrirle a Mos, él queda encerrado: R.
+export const level04: LevelData = {
+  id: 4,
+  name: 'Palancas del recinto',
+  zone: 'sanctuary',
+  parTime: 75,
+  map: [
+    '################################',
+    '################################',
+    '################################',
+    '################################',
+    '#............###################',
+    '#..c.....c...###################',
+    '#..............#################',
+    '#.L............................#',
+    '#############....c......c..c...#',
+    '#############..................#',
+    '#############................].#',
+    '#################oo#######pp####',
+    '################################',
+    '################################',
+    '#.....................*........#',
+    '#....*......*......*.......*...#',
+    '#.M..........................[.#',
+    '############pp#####oo###########',
+  ],
+  entities: [
+    { type: 'hint', at: [1, 2], text: 'Las palancas abren las compuertas del otro (↓ y S)' },
+    { type: 'hint', at: [14, 5], text: '¿Alguien quedó encerrado? R reinicia el nivel' },
+    { type: 'lever', at: [3, 16], channel: 'green' },
+    { type: 'mover', at: [6, 4], size: [1, 4], to: [6, 0], channel: 'green' },
+    { type: 'lever', at: [10, 7], channel: 'pink' },
+    { type: 'mover', at: [9, 14], size: [1, 3], to: [9, 11], channel: 'pink' },
+    { type: 'lever', at: [16, 16], channel: 'cyan' },
+    { type: 'mover', at: [21, 7], size: [1, 4], to: [21, 3], channel: 'cyan' },
+    { type: 'lever', at: [23, 10], channel: 'white' },
+    { type: 'mover', at: [25, 14], size: [1, 3], to: [25, 11], channel: 'white' },
+  ],
+};

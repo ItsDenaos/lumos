@@ -1,0 +1,41 @@
+import type { LevelData } from './types';
+
+// Ascenso vertical con plataformas encadenadas: hay que turnarse para sostener botones, con sombra al fondo.
+export const level08: LevelData = {
+  id: 8,
+  name: 'La escalera del cielo',
+  zone: 'observatory',
+  parTime: 120,
+  dark: true,
+  map: [
+    '################################',
+    '#............................c.#',
+    '#................*...c..*c.*...#',
+    '#...........................[.]#',
+    '#...........#..#################',
+    '#c.....c.......................#',
+    '#..............................#',
+    '#..............................#',
+    '###..#####.....................#',
+    '#...........*..................#',
+    '#........*.....................#',
+    '#..............................#',
+    '#.......#####..................#',
+    '#.......#####..................#',
+    '#.c..*.........................#',
+    '#.........................######',
+    '#L...M....................######',
+    '######xxxxxxxxxxxxxxxxxxxx######',
+  ],
+  entities: [
+    { type: 'hint', at: [2, 11], text: 'Túrnense en los botones para subir' },
+    { type: 'button', at: [2, 16], channel: 'green' },
+    { type: 'mover', at: [6, 16], size: [2, 1], to: [6, 12], channel: 'green' },
+    { type: 'button', at: [11, 11], channel: 'pink' },
+    { type: 'mover', at: [3, 16], size: [2, 1], to: [3, 8], channel: 'pink' },
+    { type: 'button', at: [8, 7], channel: 'cyan' },
+    { type: 'mover', at: [13, 11], size: [2, 1], to: [13, 4], channel: 'cyan' },
+    { type: 'button', at: [20, 3], channel: 'white' },
+    { type: 'mover', at: [10, 7], size: [2, 1], to: [10, 4], channel: 'white' },
+  ],
+};
