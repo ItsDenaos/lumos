@@ -207,3 +207,17 @@ Se cambió la temática sin tocar las mecánicas ni los 9 niveles: los personaje
 - **Netlify en lugar de GitHub Pages.** El juego se publica en Netlify desde el repositorio de GitHub. `netlify.toml` compila con `npm test && npm run build` (un test que falla para la publicación) y publica `dist/`, con Node 22 porque Vitest 5 lo pide (también en `.nvmrc` y en `engines` de `package.json`). Se quitó el flujo de GitHub Pages: habría fallado en cada subida sin Pages activado, y Netlify ya pasa los tests.
 - **Carpeta renombrada.** La carpeta del proyecto pasó de `inti-y-killa` a `lumos`, como el paquete.
 - **Aviso de `npm audit`.** Señala `braces` (dentro de `vite-plugin-singlefile`): es una herramienta de compilación que no llega al juego publicado, y el arreglo que propone (`--force`) baja el plugin a una versión antigua incompatible. Se deja como está.
+
+## Pantalla final ilustrada
+
+- **Fondo del final: ilustración.** El cielo, las montañas, la cornisa y el reloj dibujados en código se cambiaron por una ilustración del amanecer desde la terraza del Observatorio (`tools/fondos/final.webp`, hecha con IA a partir de un prompt con la composición de la pantalla). `tools/sprites/convertir_fondos.py` la pasa a `src/assets/final.png` (640 × 360, octree con 255 colores, 42 KB); el juego compilado pasa de 776 a 832 KB.
+  - La Luna se pone a la izquierda y el Sol sale a la derecha, del lado de Lu y de Mos.
+  - **Animación encima** (`src/render/endingArt.ts`): empieza de noche (un velo azul oscuro y estrellas que titilan a los lados del reloj) y amanece en 4,5 s; la noche se retira antes por la derecha, desde el Sol. A mitad del amanecer, cuando el reloj vuelve a girar, salen de él dos ondas de luz. Con "reducir efectos" solo queda el amanecer, sin estrellas ni ondas.
+  - Lu y Mos celebran sobre el suelo de la terraza (fila 313 del arte), un poco más hacia dentro que antes para no pisar el telescopio ni el engranaje.
+  - El título, la frase y el panel subieron unos píxeles para que el panel acabe justo encima del suelo; "¡Gracias por jugar!" y "Enter · volver al título" quedan sobre los ladrillos.
+  - Se quitó el código que ya no usaba nadie: el cielo y la cornisa del final, el eclipse y el reloj dibujados, las estrellas fijas, las crestas de montañas, el ruido suave y la línea de píxeles.
+- **Sin créditos en el final.** Las líneas de créditos se cambiaron por un reto para seguir jugando, debajo de las estadísticas:
+  - Si faltan estrellas: "Aún quedan N estrellas por conseguir en el cielo." y "Vuelve al mapa e intenta batir tus tiempos." (en singular si falta una).
+  - Con las 27: "¡Las 27 estrellas! El reloj del cielo nunca brilló tanto." y "¿Y sin que nadie caiga en un charco?".
+  - Con las 27 y sin ninguna caída en toda la partida, el reto ya está cumplido: "¡Las 27 estrellas, y sin caer nunca en un charco!" y "El reloj del cielo nunca brilló tanto.".
+  - El panel queda más bajo (dos líneas en lugar de cinco). La fuente Pixelify Sans se acredita en el README: su licencia (SIL OFL) no pide mostrarla en pantalla.

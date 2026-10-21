@@ -92,33 +92,6 @@ export function ring(ctx: CanvasRenderingContext2D, cx: number, cy: number, r: n
   }
 }
 
-/** Línea de un píxel de grosor (Bresenham). */
-export function line(ctx: CanvasRenderingContext2D, x0: number, y0: number, x1: number, y1: number, color: string): void {
-  ctx.fillStyle = color;
-  let x = Math.round(x0);
-  let y = Math.round(y0);
-  const tx = Math.round(x1);
-  const ty = Math.round(y1);
-  const dx = Math.abs(tx - x);
-  const dy = -Math.abs(ty - y);
-  const sx = x < tx ? 1 : -1;
-  const sy = y < ty ? 1 : -1;
-  let err = dx + dy;
-  for (;;) {
-    ctx.fillRect(x, y, 1, 1);
-    if (x === tx && y === ty) break;
-    const e2 = 2 * err;
-    if (e2 >= dy) {
-      err += dy;
-      x += sx;
-    }
-    if (e2 <= dx) {
-      err += dx;
-      y += sy;
-    }
-  }
-}
-
 /** Crea un canvas de trabajo. */
 export function makeCanvas(w: number, h: number): HTMLCanvasElement {
   const canvas = document.createElement('canvas');

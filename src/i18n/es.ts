@@ -104,13 +104,13 @@ export const es = {
     stars: (got: number, total: number) => `Estrellas: ${got} de ${total}`,
     time: (time: string) => `Suma de mejores tiempos: ${time}`,
     deaths: (mos: number, lu: number) => `Muertes: Lu ${lu} · Mos ${mos}`,
-    credits: [
-      'Una idea de Moisés',
-      'Programado con Claude Code',
-      'Lu y Mos: la hoja de sprites del diseño, pasada a pixel art',
-      'Escenarios y sonido hechos con código: Canvas 2D y Web Audio',
-      'Fuente Pixelify Sans (SIL Open Font License)',
-    ],
+    /** Bajo las estadísticas, un reto: las estrellas que faltan o, con todas, no caer nunca. */
+    challenge: (missing: number, total: number, deaths: number): readonly [string, string] =>
+      missing > 0
+        ? [`Aún ${missing === 1 ? 'queda 1 estrella' : `quedan ${missing} estrellas`} por conseguir en el cielo.`, 'Vuelve al mapa e intenta batir tus tiempos.']
+        : deaths > 0
+          ? [`¡Las ${total} estrellas! El reloj del cielo nunca brilló tanto.`, '¿Y sin que nadie caiga en un charco?']
+          : [`¡Las ${total} estrellas, y sin caer nunca en un charco!`, 'El reloj del cielo nunca brilló tanto.'],
     thanks: '¡Gracias por jugar!',
     continue: 'Enter · volver al título',
   },

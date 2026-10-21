@@ -7,6 +7,7 @@ import { AudioEngine } from '../src/core/audio';
 import { Input } from '../src/core/input';
 import { SceneManager } from '../src/core/scenes';
 import { loadSave, SAVE_KEY, writeSave } from '../src/core/storage';
+import { es } from '../src/i18n/es';
 import type { LevelData } from '../src/levels/types';
 import type { GameContext } from '../src/scenes/context';
 import { EndingScene } from '../src/scenes/ending';
@@ -175,6 +176,13 @@ describe('pantallas con teclado', () => {
     tick(game, 150);
     press(game, 'Enter');
     expect(current(game)).toBeInstanceOf(TitleScene);
+  });
+
+  it('el reto del final depende de las estrellas que faltan y de las caídas', () => {
+    expect(es.ending.challenge(8, 27, 3)[0]).toBe('Aún quedan 8 estrellas por conseguir en el cielo.');
+    expect(es.ending.challenge(1, 27, 0)[0]).toBe('Aún queda 1 estrella por conseguir en el cielo.');
+    expect(es.ending.challenge(0, 27, 5)).toEqual(['¡Las 27 estrellas! El reloj del cielo nunca brilló tanto.', '¿Y sin que nadie caiga en un charco?']);
+    expect(es.ending.challenge(0, 27, 0)[0]).toBe('¡Las 27 estrellas, y sin caer nunca en un charco!');
   });
 
   it('en el mapa no se puede elegir un nivel bloqueado', () => {

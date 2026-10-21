@@ -26,4 +26,12 @@ En el juego (`src/render/background.ts`):
 - **Nada que parezca suelo:** repisas o balcones horizontales nítidos a media altura pueden confundirse con plataformas.
 - **Evitar los colores que significan algo:** verde `#4ADE80`, rosa `#F472B6`, cian `#22D3EE` y blanco puro (botones, palancas y plataformas), y manchas grandes del oro `#F2B632`, la plata `#CFD9EA` o el violeta `#7B2CBF` de los charcos.
 
+## Pantalla final
+
+`final.webp` es el fondo de la pantalla que sale al superar el último nivel: el amanecer desde la terraza del Observatorio, con el reloj del cielo arreglado arriba, la Luna poniéndose a la izquierda (el lado de Lu) y el Sol saliendo a la derecha (el de Mos). El mismo script la pasa a `src/assets/final.png`.
+
+En el juego (`src/render/endingArt.ts`) la escena empieza de noche y se aclara de derecha a izquierda, desde el Sol; a mitad del amanecer el reloj suelta dos ondas de luz al volver a girar. Lu y Mos se colocan sobre el suelo de la terraza (fila 313 del arte, `ENDING_FLOOR`), por dentro del telescopio y del engranaje. Si cambias la imagen, revisa esa fila y la posición del reloj (`CLOCK`).
+
+Encima van el título, la frase final, un panel con estrellas, tiempos y créditos, y "¡Gracias por jugar!": por eso el centro de la imagen, de media altura hacia abajo, es tranquilo.
+
 `anteriores/` guarda cómo eran los fondos dibujados en código, con capturas de los 9 niveles, por si sirven de referencia.

@@ -25,7 +25,7 @@ Para ganar, Lu y Mos deben estar a la vez frente a su puerta. Si cualquiera muer
 - Solo para regenerar las imágenes desde los originales del diseño: Python 3 con Pillow (`python -m pip install pillow`).
   - `python tools/sprites/convertir.py`: los sprites de Lu y Mos (`src/assets/personajes.png` y `src/render/spriteSheet.ts`).
   - `python tools/elementos/convertir.py`: la piedra y los elementos de los niveles (`src/assets/elementos.png` y `src/render/propSheet.ts`), desde las hojas de `tools/elementos/originales/` (los prompts con que se hicieron están en `tools/elementos/PROMPT.md`).
-  - `python tools/sprites/convertir_fondos.py`: la portada del menú, el fondo del mapa y los fondos de las tres zonas (`src/assets/portada.png`, `mapa.png` y `fondo-*.png`; los originales de los fondos están en `tools/fondos/`, con su [LEEME](tools/fondos/LEEME.md)).
+  - `python tools/sprites/convertir_fondos.py`: la portada del menú, el fondo del mapa, los fondos de las tres zonas y el de la pantalla final (`src/assets/portada.png`, `mapa.png`, `fondo-*.png` y `final.png`; los originales de los fondos están en `tools/fondos/`, con su [LEEME](tools/fondos/LEEME.md)).
 
 ## Comandos
 
@@ -96,13 +96,13 @@ src/
 ├── core/            # bucle, teclado y ratón, escenas, escalado, ajustes, guardado, sonido y música
 ├── game/            # mundo, física, personaje, reglas, canales, lectura de mapas
 │   └── entities/    # gema, puerta, botón, palanca, plataforma y bloque
-├── assets/          # imágenes ya convertidas: personajes, portada, mapa, fondos de las zonas y elementos de los niveles
+├── assets/          # imágenes ya convertidas: personajes, portada, mapa, fondos de las zonas, final y elementos de los niveles
 ├── render/          # pixel art: lienzo del arte, sprites, iconos, fondos, ladrillos, líquidos, personajes, animación, partículas, luz, interfaz
 ├── scenes/          # título, cómo jugar, opciones, mapa, partida, pausa, resultados y final
 └── levels/          # los 9 niveles en ASCII, sandbox, validador y comprobador de alcance
 tests/               # física, reglas, mecanismos, guardado, música, pantallas, arte, niveles y recorridos
 tools/sprites/       # las imágenes originales del diseño (sprites, portada y mapa) y los scripts que las convierten
-tools/fondos/        # las ilustraciones de los fondos de cada zona
+tools/fondos/        # las ilustraciones de los fondos de cada zona y de la pantalla final
 tools/elementos/     # las hojas de la piedra y los elementos de los niveles, sus prompts y su script
 tools/publicar/      # la portada para la página de itch.io
 netlify.toml         # cómo compila y publica Netlify
@@ -122,9 +122,13 @@ netlify.toml         # cómo compila y publica Netlify
 
 Pendiente de probar jugando: los **tiempos objetivo** (la 3.ª estrella) siguen siendo los del plan. Se fijan en unas 1,3 veces el tiempo de una buena partida; los bots tardan entre 6 y 27 s, mucho menos que una persona.
 
+## Créditos
+
+Fuente [Pixelify Sans](https://github.com/eifetx/Pixelify-Sans), de The Pixelify Sans Project Authors, con licencia SIL Open Font License 1.1.
+
 ## Publicar
 
-`npm run build` deja todo el juego en **un solo archivo**, `dist/index.html` (unos 780 KB): el código, la fuente y las imágenes van dentro. Se abre con doble clic, sin internet, en Chrome, Edge y Firefox, así que también se puede compartir tal cual (por correo, en un USB…). El progreso se guarda en el navegador de cada persona.
+`npm run build` deja todo el juego en **un solo archivo**, `dist/index.html` (unos 830 KB): el código, la fuente y las imágenes van dentro. Se abre con doble clic, sin internet, en Chrome, Edge y Firefox, así que también se puede compartir tal cual (por correo, en un USB…). El progreso se guarda en el navegador de cada persona.
 
 ### itch.io
 

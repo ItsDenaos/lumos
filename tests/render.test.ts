@@ -2,6 +2,11 @@
 // de Lu y Mos, la animación de los personajes, el aspecto de los charcos y los colores.
 
 import { describe, expect, it } from 'vitest';
+import finalData from '../src/assets/final.png?inline';
+import forestData from '../src/assets/fondo-bosque.png?inline';
+import observatoryData from '../src/assets/fondo-observatorio.png?inline';
+import sanctuaryData from '../src/assets/fondo-santuario.png?inline';
+import mapData from '../src/assets/mapa.png?inline';
 import coverData from '../src/assets/portada.png?inline';
 import propsData from '../src/assets/elementos.png?inline';
 import sheetData from '../src/assets/personajes.png?inline';
@@ -101,8 +106,10 @@ describe('hoja de sprites de Lu y Mos', () => {
     expect(png).toMatchObject({ w: SHEET_SIZE.w, h: SHEET_SIZE.h, palette: true, transparency: true });
   });
 
-  it('la portada del menú ocupa justo el lienzo del arte (640 × 360) y usa paleta', () => {
-    expect(pngInfo(coverData)).toMatchObject({ w: ART_W, h: ART_H, palette: true });
+  it('la portada, el mapa, los fondos de las zonas y el final ocupan justo el lienzo del arte (640 × 360) y usan paleta', () => {
+    for (const data of [coverData, mapData, forestData, sanctuaryData, observatoryData, finalData]) {
+      expect(pngInfo(data)).toMatchObject({ w: ART_W, h: ART_H, palette: true });
+    }
   });
 });
 

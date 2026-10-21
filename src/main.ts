@@ -13,6 +13,7 @@ import { sandbox } from './levels/sandbox';
 import { loadBackgrounds } from './render/background';
 import { loadCharacters } from './render/characters';
 import { loadCover } from './render/cover';
+import { loadEndingArt } from './render/endingArt';
 import { loadMapArt } from './render/mapArt';
 import { loadProps } from './render/props';
 import { loadFonts } from './render/fonts';
@@ -83,7 +84,7 @@ async function main(): Promise<void> {
   ctx.fillStyle = ZONE_STYLES.observatory.sky[0];
   ctx.fillRect(0, 0, WORLD.width, WORLD.height);
   drawText(ctx, es.loading, WORLD.width / 2, WORLD.height / 2, { size: 28, align: 'center' });
-  await Promise.all([loadFonts(), loadCharacters(), loadCover(), loadMapArt(), loadBackgrounds(), loadProps()]);
+  await Promise.all([loadFonts(), loadCharacters(), loadCover(), loadMapArt(), loadBackgrounds(), loadProps(), loadEndingArt()]);
 
   // En depuración, ?nivel=N (o ?nivel=sandbox) entra directo en ese nivel; N recorre la campaña y el sandbox.
   const wanted = game.debug ? params.get('nivel') : null;

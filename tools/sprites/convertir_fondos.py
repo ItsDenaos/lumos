@@ -8,9 +8,10 @@ Para cada una:
 3. Reduce los colores a una paleta y la guarda con paleta (pesa poco).
 
 Entradas: tools/sprites/portada-referencia.webp y mapa-referencia.webp, y en tools/fondos/
-los fondos de los niveles: bosque.webp, santuario.webp y observatorio.webp.
-Salidas: src/assets/portada.png, mapa.png, fondo-bosque.png, fondo-santuario.png y
-fondo-observatorio.png, y la portada para itch.io en tools/publicar/portada-itch.png.
+los fondos de los niveles (bosque.webp, santuario.webp y observatorio.webp) y el de la
+pantalla final (final.webp).
+Salidas: src/assets/portada.png, mapa.png, fondo-bosque.png, fondo-santuario.png,
+fondo-observatorio.png y final.png, y la portada para itch.io en tools/publicar/portada-itch.png.
 Requiere Python 3 y Pillow:  python -m pip install pillow
 Uso, desde la raíz del proyecto:  python tools/sprites/convertir_fondos.py
 """
@@ -89,6 +90,8 @@ def main():
     # engranajes, el reloj): el octree con 255 colores los conserva.
     for name in ['bosque', 'santuario', 'observatorio']:
         convert(BACKGROUNDS / f'{name}.webp', f'fondo-{name}.png', colors=255, method=Image.Quantize.FASTOCTREE)
+    # El final es casi todo degradados (el amanecer y la niebla): también con 255 colores.
+    convert(BACKGROUNDS / 'final.webp', 'final.png', colors=255, method=Image.Quantize.FASTOCTREE)
 
 
 if __name__ == '__main__':

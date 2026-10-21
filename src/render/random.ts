@@ -14,16 +14,6 @@ export function hash(...values: number[]): number {
   return (h >>> 0) / 4294967296;
 }
 
-/** Ruido suave en [-1, 1]: interpola valores aleatorios fijados en los enteros. */
-export function smoothNoise(x: number, seed: number): number {
-  const i = Math.floor(x);
-  const f = x - i;
-  const t = f * f * (3 - 2 * f);
-  const a = hash(i, seed) * 2 - 1;
-  const b = hash(i + 1, seed) * 2 - 1;
-  return a + (b - a) * t;
-}
-
 /** Generador de secuencias reproducible (mulberry32). */
 export function seededRandom(seed: number): () => number {
   let s = seed >>> 0;
